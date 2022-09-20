@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.views import  View
 from django.views.decorators.csrf import csrf_exempt
 
-
 class IndexClass(View):
     def get(self, request):
         return HttpResponse("Hello world")
@@ -19,5 +18,13 @@ def save_events_json(request):
     if request.is_ajax():
         s = 'this is ajax'
         if request.method == 'POST':
+            # open text file
+            text_file = open("D:/test.txt", "w")
+
+            # write string to file
+            text_file.write('"%s"\n' % request.body)
+
+            # close file
+            text_file.close()
             return HttpResponse('Raw Data: "%s"' % request.body)
     return HttpResponse('null' + s)
