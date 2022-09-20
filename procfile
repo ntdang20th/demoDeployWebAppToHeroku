@@ -1,1 +1,1 @@
-web: gunicorn demoHost.wsgi --log-file -
+web: gunicorn posttohost.wsgi --log-file -
