@@ -16,7 +16,6 @@ class IndexClass(View):
 def save_events_json(request):
     s = ' nothing'
     if request.is_ajax():
-        s = 'this is ajax'
         if request.method == 'POST':
             # open text file
             text_file = open("D:/test.txt", "w")
@@ -26,5 +25,6 @@ def save_events_json(request):
 
             # close file
             text_file.close()
-            return HttpResponse('Raw Data: "%s"' % request.body)
-    return HttpResponse('null' + s)
+
+            return HttpResponse('POST Data: "%s"' % request.body)
+    return HttpResponse('RAW data: "%s"' % request.body)
